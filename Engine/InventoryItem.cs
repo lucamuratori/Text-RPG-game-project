@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
 
 namespace Engine
 {
@@ -12,6 +11,16 @@ namespace Engine
     {
         private Item _details;
         private int _quantity;
+
+        public int ItemId
+        {
+            get { return Details.ID; }
+        }
+
+        public int Price
+        {
+            get { return Details.Price; }
+        }
 
         public Item Details
         {

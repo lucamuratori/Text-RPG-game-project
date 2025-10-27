@@ -648,5 +648,13 @@ namespace Engine
 
             return playerData.InnerXml; // The XML document, as a string, so we can save the data to disk
         }
+
+        public static Player CreatePlayerFromDatabase(int currentHitPoints, int maximumHitPoints, int gold, int experiencePoints, int currentLocation)
+        {
+            Player player = new Player(currentHitPoints, maximumHitPoints, gold, experiencePoints);
+
+            player.MoveTo(World.LocationByID(currentLocation));
+            return player;
+        }
     }
 }

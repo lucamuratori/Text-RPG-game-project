@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Engine
@@ -306,7 +304,7 @@ namespace Engine
             CurrentHitPoints = MaximumHitPoints;
 
             // Does the location have a quest?
-            if (newLocation.QuestAvailableHere != null)
+            if (newLocation.HasAQuest)
             {
                 // See if the player already has the quest, and if they've completed it
                 bool playerAlreadyHasQuest = HasThisQuest(newLocation.QuestAvailableHere);

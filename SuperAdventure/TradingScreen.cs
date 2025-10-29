@@ -1,12 +1,14 @@
-﻿using Engine;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Engine;
 
 namespace SuperAdventure
 {
     public partial class TradingScreen : Form
     {
         private Player _currentPlayer;
+        // Commented out this property, because I chose to pass the player as a parameter in the constructor.
+        //public Player CurrentPlayer { get; set; }
 
         public TradingScreen(Player player)
         {

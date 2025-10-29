@@ -7,16 +7,6 @@ namespace Engine
         private Item _details;
         private int _quantity;
 
-        public int ItemId
-        {
-            get { return Details.ID; }
-        }
-
-        public int Price
-        {
-            get { return Details.Price; }
-        }
-
         public Item Details
         {
             get { return _details; }
@@ -38,9 +28,19 @@ namespace Engine
             }
         }
 
+        public int ItemID
+        {
+            get { return Details.ID; }
+        }
+
         public string Description
         {
             get { return Quantity > 1 ? Details.NamePlural : Details.Name; }
+        }
+
+        public int Price
+        {
+            get { return Details.Price; }
         }
 
         public InventoryItem(Item details, int quantity)
@@ -53,7 +53,7 @@ namespace Engine
 
         protected void OnPropertyChanged(string name)
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }

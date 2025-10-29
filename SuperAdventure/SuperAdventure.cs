@@ -1,9 +1,10 @@
-﻿using Engine;
-using System;
+﻿using System;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
+
+using Engine;
 
 namespace SuperAdventure
 {
@@ -132,14 +133,13 @@ namespace SuperAdventure
 
             if (propertyChangedEventArgs.PropertyName == "CurrentLocation")
             {
-                // Show/hide the trade button if the vendor is present in that location
-                btnTrade.Visible = (_player.CurrentLocation.VendorWorkingHere != null);
-
                 // Show/hide available movement buttons
                 btnNorth.Visible = (_player.CurrentLocation.LocationToNorth != null);
                 btnEast.Visible = (_player.CurrentLocation.LocationToEast != null);
                 btnSouth.Visible = (_player.CurrentLocation.LocationToSouth != null);
                 btnWest.Visible = (_player.CurrentLocation.LocationToWest != null);
+
+                btnTrade.Visible = (_player.CurrentLocation.VendorWorkingHere != null);
 
                 // Display current location name and description
                 rtbLocation.Text = _player.CurrentLocation.Name + Environment.NewLine;

@@ -6,7 +6,7 @@ namespace Engine
     public class Vendor : INotifyPropertyChanged
     {
         public string Name { get; set; }
-        public BindingList<InventoryItem> Inventory { get; private set; }
+        public BindingList<InventoryItem> Inventory { get; set; }
 
         public Vendor(string name)
         {
@@ -18,7 +18,7 @@ namespace Engine
         {
             InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToAdd.ID);
 
-            if(item == null)
+            if (item == null)
             {
                 // They didn't have the item, so add it to their inventory
                 Inventory.Add(new InventoryItem(itemToAdd, quantity));
@@ -36,25 +36,25 @@ namespace Engine
         {
             InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToRemove.ID);
 
-            if(item == null)
+            if (item == null)
             {
-                // The item is not in the player's inventory, so ignore it
-                // Raise an error for this situation
+                // The item is not in the player's inventory, so ignore it.
+                // We might want to raise an error for this situation
             }
             else
             {
                 // They have the item in their inventory, so decrease the quantity
                 item.Quantity -= quantity;
 
-                // Don't allow negative quantities
-                // Raise an error in this situation
-                if(item.Quantity < 0)
+                // Don't allow negative quantities.
+                // We might want to raise an error for this situation
+                if (item.Quantity < 0)
                 {
                     item.Quantity = 0;
                 }
 
                 // If the quantity is zero, remove the item from the list
-                if(item.Quantity == 0)
+                if (item.Quantity == 0)
                 {
                     Inventory.Remove(item);
                 }
@@ -65,10 +65,10 @@ namespace Engine
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        
+
         private void OnPropertyChanged(string name)
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
